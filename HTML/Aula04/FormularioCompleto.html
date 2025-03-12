@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de Formulário Completo</title>
+</head>
+<body>
+    <form action="https://67d0b74b825945773eb1b9fe.mockapi.io/aluno" method="post">
+        <fieldset>
+            <legend>Cadastro do aluno</legend>
+            <p>
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome">
+            </p>
+            <p>
+                <label for="alt">Altura:</label>
+                <input type="number" name="alt" id="alt" min="0" max="3" step="0.1">
+            </p>
+            <p>
+                <label for="cor">Cor dos cabelos:</label>
+                <input type="color" name="cor" id="cor">
+            </p>
+            <p>
+                <label for="dt">Data de nascimento:</label>
+                <input type="date" name="dt" id="dt">
+            </p>
+            <p>
+                <label for="email">E-mail:</label>
+                <input type="email" name="email" id="email">
+            </p>
+            <p>
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha" id="senha">
+            </p>
+            <p>
+                <label for="genero">Gênero:</label>
+                <input type="radio" name="genero" value="M">
+                <label for="">Masculino</label>
+                <input type="radio" name="genero" value="F">
+                <label for="">Feminino</label>
+            </p>
+            <p>
+                <label for="gosto">Gosta de:</label>
+                <input type="checkbox" name="ler" value="l">
+                <label for="">Ler</label>
+                <input type="checkbox" name="filme" value="f">
+                <label for="">Filme</label>
+                <input type="checkbox" name="esporte" value="e">
+                <label for="">Esporte</label>
+            </p>
+            <p>
+                <label for="up">Upload RG:</label>
+                <input type="file" name="up" id="up">
+            </p>
+            <p>
+                <label for="estado">Estado:</label>
+                <select name="estado" id="estado">
+                    <option value="0">Selecione...</option>
+                    <optgroup label="Sudeste">
+                    <option value="SP">São Paulo</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    </optgroup>
+                    <optgroup label="Sul">
+                    <option value="PR">Paraná</option>
+                    <option value="SC">Santa Catarina</option>
+                    </optgroup>
+                </select>
+            </p>
+
+            <p>
+                <button type="submit">Gravar</button>
+                <button type="reset">Limpar</button>
+            </p>
+        </fieldset>
+    </form>
+</body>
+</html>
