@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anatomia do CSS</title>
+</head>
+<style>
+    /* tipos de propriedades do CSS */
+    .seletor {
+        /* aplicar por código */
+        color: #48D1CC;
+        /* aplicar por unidade de medida */
+        font-size: 50px;
+        /* aplicar por nome */
+        background-color: bisque;
+        /* aplicar por código, unidade de medida e nome; */
+        border: #0b0d0d 5px solid;
+        /* aplicar por função */
+        width: calc(100% - 350px);
+    }
+    /* aplicar por pseudo-classe */
+    .seletor:hover {
+        background-color: black;
+    }
+    /* aplicar por pseudo-elemento */
+    .seletor::first-letter {
+        font-size: 150px;
+    }
+
+</style>
+<body>
+    <div class="seletor">
+        <h1>Seletor</h1>
+        <p>É a parte do CSS que define qual elemento HTML será estilizado.</p>
+    </div>
+</body>
+</html>
