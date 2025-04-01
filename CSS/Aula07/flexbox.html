@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula de CSS - Flexbox</title>
+</head>
+<style>
+    .container {
+        border: 1px black solid;
+        height: 200px;
+        width: 300px;
+        /* como aplicar flexbox */
+        display: flex;
+        /* alterar os eixos */
+        flex-direction: column;
+        flex-direction: column-reverse;
+        flex-direction: row-reverse;
+        flex-direction: row;
+        /* pule linha */
+        flex-wrap: nowrap;
+        flex-wrap: wrap;
+        /* altera os eixos e define pula linha */
+        flex-flow: column;
+        flex-flow: row;
+        flex-flow: column-reverse;
+        flex-flow: wrap-reverse;
+        flex-flow: wrap;
+        /* mudar os itens no eixo principal */
+        justify-content: center;
+        justify-content: flex-end;
+        justify-content: flex-start;
+        justify-content: space-around;
+        justify-content: space-between; 
+        /* mudar os itens no eixo perpendicular */
+        align-items: center;
+        align-items: flex-end;
+        align-items: flex-start;
+    }
+    .item {
+        border: 1px red solid;
+        width: 40px;
+        /* coloca uma margin */
+        gap: 3px;
+    }
+    .item1{
+        border: 1px blue solid;
+        width: 40px;
+        align-self: center;
+        align-self: flex-end;
+        align-self: flex-start;
+        /* mudar a ordem dos itens */
+        order: 2;
+        flex-grow: 3;
+        
+    }
+    .item2{
+        border: 1px blue solid;
+        width: 40px;
+        align-self: center;
+        order: 1;
+        /* contrário do grow ->diminui */
+        flex-shrink: 2;
+    }
+    .item3{
+        border: 1px blue solid;
+        width: 40px;
+        align-self: flex-end;
+        gap: 10;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="item1">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+        <div class="item">10</div>
+    </div>
+    <br><br>
+    <div class="container">
+        <div class="item1">1</div>
+        <div class="item2">2</div>
+        <div class="item3">3</div>
+    </div>
+</body>
+</html>
