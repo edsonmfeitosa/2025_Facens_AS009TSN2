@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - Manipular texto</title>
+</head>
+<body>
+    <h1>DOM - Manipular texto</h1>
+    <p id="um">Primeiro parágrafo</p>
+    <p class="segundo">Segundo parágrafo</p>
+    <p>
+        <input type="text" name="texto" id="texto">
+    </p>
+    <p>
+        <ul>
+            <li>maça</li>
+            <li>banana</li>
+            <li>laranja</li>
+        </ul>
+    </p>
+</body>
+<script>
+    let titulo = document.querySelector('h1')
+    console.log(titulo)
+    titulo.textContent = 'Modifiquei o título'
+    let paragrafo = document.querySelector('.segundo')
+    paragrafo.textContent = "mudei o texto do segundo parágrafo"
+    document.querySelector('#um').innerHTML = 'Edson'
+    let cxtexto = document.querySelector('#texto')
+    cxtexto.value = 'Alunos'
+    let frutas = document.querySelectorAll('li')
+    console.log(frutas)
+    frutas[1].textContent = 'abacaxi'
+    let todosParagrafos = document.getElementsByTagName('p')
+    console.log(todosParagrafos)
+</script>
+</html>

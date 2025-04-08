@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - Manipular propriedades</title>
+</head>
+<style>
+    .paragrafo {
+        background-color: aquamarine;
+        font-size: large;
+    }
+</style>
+<body>
+    <h1>DOM - Manipular propriedades</h1>
+    <p>
+        <a href="https://www.google.com">Google</a>
+    </p>
+    <p>
+        <img src="" alt=""> 
+    </p>
+</body>
+<script>
+    // manipular propriedades
+    let link = document.querySelector('a')
+    // link.href = 'https://facens.br/'
+     link.textContent = 'Facens'
+    link.setAttribute('href', 'https://facens.br/')
+    let imagem = document.querySelector('img')
+    imagem.src = 'https://facens.br/wp-content/uploads/2021/03/logo-f.png'
+
+    // manipular o CSS
+    imagem.style.width = '50px'
+    let titulo = document.querySelector('h1')
+    titulo.style.color = 'red'
+    titulo.style.backgroundColor = 'black'
+    titulo.style.border = '6px #ccc solid'
+    titulo.style.borderRadius = '30px'
+    let par = document.querySelector('p')
+    par.setAttribute('class', 'paragrafo')
+    par.removeAttribute('class')
+    par.classList = 'paragrafo'
+    par.classList.remove('paragrafo')
+</script>
+</html>
+
+<!-- https://www.w3schools.com/jsref/dom_obj_event.asp  -->
+
