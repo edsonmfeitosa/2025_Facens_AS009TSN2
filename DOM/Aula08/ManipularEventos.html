@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - Manipular Eventos</title>
+</head>
+<body onload="carregarTela()">
+    <h1 onmouseenter="notitulo()">DOM - Manipular Eventos</h1>
+    <p>
+        <label for="texto">Palavra:</label>
+        <input type="text" name="texto" id="texto">
+        <button onclick="contar(event)">Contar</button>
+    </p>
+    <p class="qtd">
+        Quantidade de caracteres:
+    </p>
+</body>
+<script>
+    // eventos disparados de maneira imperativa
+    function carregarTela() {
+        console.log('Carregou a tela!')
+    }
+    function notitulo() {
+        window.alert('Tira o mouse do título!!!!')
+    }
+    // Escutador de eventos
+    let cxtexto = document.querySelector('#texto')
+    cxtexto.addEventListener('focusin', 
+        function (){
+            console.log('em foco')
+        }
+    )
+    cxtexto.addEventListener('focusout', () => console.log('saiu do foco'))
+
+
+    function contar(event) {
+        //tira o comportamento padrão
+        event.preventDefault()
+        let letras = document.querySelector('#texto').value
+        let resposta = document.querySelector('.qtd')
+        resposta.textContent = `Quantidade de caracteres: ${letras.length}`
+    }
+</script>
+</html>

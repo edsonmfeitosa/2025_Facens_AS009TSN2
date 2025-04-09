@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar elementos</title>
+</head>
+<body>
+    <h1> Criar elementos html</h1>
+    <p>
+        <label for="palavra">Digite uma palavra: </label>
+        <input type="text" name="palavra" id="palavra">
+        <button onclick="listar(event)">Colocar na lista</button>
+    </p>
+    <p>
+        <ul></ul>
+    </p>
+</body>
+<script>
+    function listar(event) {
+        event.preventDefault()
+        let dado = document.querySelector('#palavra').value
+        let lista = document.querySelector('ul')
+        let item = document.createElement('li')
+        item.textContent = dado
+        lista.appendChild(item)
+        document.querySelector('#palavra').value = ''
+    }
+</script>
+</html>
