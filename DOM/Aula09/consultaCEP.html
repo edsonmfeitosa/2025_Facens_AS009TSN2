@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX - Fetch</title>
+</head>
+<style>
+    .carregando {
+        color: red;
+        visibility: hidden;
+    }
+</style>
+<body>
+    <form>
+        <fieldset>
+            <legend>Consulta CEP</legend>
+            <label for="cep">CEP:</label>
+            <input type="text" name="cep" id="cep" placeholder="Digite o CEP">
+            <button onclick="consultar(event)">Consultar</button>
+        </fieldset>
+    </form>
+    <form>
+        <fieldset>
+            <legend>Endereço</legend>
+            <p class="carregando">
+                Carregando...
+            </p>
+            <p>
+                <label for="rua">Rua:</label>
+                <input type="text" name="rua" id="rua">
+            </p>
+            <p>
+                <label for="bairro">Bairro:</label>
+                <input type="text" name="bairro" id="bairro">
+            </p>
+            <p>
+                <label for="estado">Estado:</label>
+                <input type="text" name="estado" id="estado">
+            </p>
+        </fieldset>
+    </form>
+</body>
+<!-- <script src="asyncAwait.js"></script> -->
+ <script src="promise.js"></script>
+</html>

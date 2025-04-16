@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX - Fetch com retorno de texto</title>
+</head>
+<body>
+    <h1>AJAX - Fetch com retorno de texto</h1>
+    <header>
+        <a href="../Aula08/CriarElementos.html">Criar elementos</a>
+        <a href="../Aula08/ManipularEventos.html">Manipular eventos</a>
+        <a href="../../CSS/Aula07/flexbox.html">Flexbox</a>
+        <a href="../../HTML/Aula04/FormularioCompleto.html">Formulário</a>
+    </header>
+    <hr>
+    <div class="conteudo">
+
+    </div>
+</body>
+<script>
+    const conteudo = document.querySelector('.conteudo');
+    let links = document.querySelectorAll('a');
+    links.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const url = e.target.getAttribute('href');
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    conteudo.innerHTML = data;
+                })
+        });
+    });
+</script>
+</html>
