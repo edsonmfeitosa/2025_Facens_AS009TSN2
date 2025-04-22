@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJAX - Promisse</title>
+  </head>
+  <body>
+    <select name="aluno" id="aluno"></select>
+    <hr />
+    <form>
+      <p>
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome" />
+        <button onclick="consultar(event)">Consultar</button>
+      </p>
+      <p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Telefone</th>
+                </tr>
+            </thead>
+            <tbody id="tabela">
+
+            </tbody>
+        </table>
+      </p>
+    </form>
+  </body>
+  <script>
+    let alunos = [];
+    let clientes = [];
+    async function variosDados() {
+      const url1 = "https://67d0b74b825945773eb1b9fe.mockapi.io/aluno";
+      const url2 = "https://67d0b74b825945773eb1b9fe.mockapi.io/cliente";
+      const resposta = await Promise.all([fetch(url1), fetch(url2)]);
+      alunos = await resposta[0].json();
+      clientes = await resposta[1].json();
+      console.log(alunos);
+      console.log(clientes);
+      let selectAluno = document.querySelector("#aluno");
+      alunos.forEach((aluno) => {
+        let option = document.createElement("option");
+        option.value = aluno.id;
+        option.innerText = aluno.nome;
+        selectAluno.appendChild(option);
+      });
+      //inserir os dados na tabela
+      let tabela = document.querySelector("#tabela");
+        alunos.forEach((aluno) => {
+            let tr = document.createElement("tr");
+            let tdNome = document.createElement("td");
+            tdNome.innerText = aluno.nome;
+            let tdEmail = document.createElement("td");
+            tdEmail.innerText = aluno.email;
+            let tdTelefone = document.createElement("td");
+            tdTelefone.innerText = aluno.telefone;
+            tr.appendChild(tdNome);
+            tr.appendChild(tdEmail);
+            tr.appendChild(tdTelefone);
+            tabela.appendChild(tr);
+        });
+    }
+    variosDados();
+    function consultar(event) {
+        event.preventDefault();
+        let nome = document.querySelector("#nome").value;
+        let tabela = document.querySelector("#tabela");
+        tabela.innerHTML = ""; // Limpa a tabela antes de adicionar novos dados
+        let alunoEncontrado = alunos.filter((aluno) => 
+                aluno.nome.toLowerCase().includes(nome.toLowerCase())
+        );
+        if (alunoEncontrado.length > 0) {
+            let tr = document.createElement("tr");
+            let tdNome = document.createElement("td");
+            tdNome.innerText = alunoEncontrado[0].nome;
+            let tdEmail = document.createElement("td");
+            tdEmail.innerText = alunoEncontrado[0].email;
+            let tdTelefone = document.createElement("td");
+            tdTelefone.innerText = alunoEncontrado[0].telefone;
+            tr.appendChild(tdNome);
+            tr.appendChild(tdEmail);
+            tr.appendChild(tdTelefone);
+            tabela.appendChild(tr);
+        } else {
+            alert("Aluno não encontrado!");
+        }
+        
+    }
+  </script>
+</html>
