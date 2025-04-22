@@ -48,7 +48,10 @@
         option.innerText = aluno.nome;
         selectAluno.appendChild(option);
       });
-      //inserir os dados na tabela
+      atualizar();
+    }
+    function atualizar() {
+        //inserir os dados na tabela
       let tabela = document.querySelector("#tabela");
         alunos.forEach((aluno) => {
             let tr = document.createElement("tr");
@@ -68,6 +71,10 @@
     function consultar(event) {
         event.preventDefault();
         let nome = document.querySelector("#nome").value;
+        if (nome === "") {
+            atualizar(); // Se o campo de nome estiver vazio, atualiza a tabela com todos os alunos
+            return;
+        }
         let tabela = document.querySelector("#tabela");
         tabela.innerHTML = ""; // Limpa a tabela antes de adicionar novos dados
         let alunoEncontrado = alunos.filter((aluno) => 
