@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Simples</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Dados do aluno</legend>
+            <p>
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome" 
+                    placeholder="Digite o nome completo" required>
+            </p>
+            <p>
+                <label for="email">E-mail:</label>
+                <input type="email" name="email" id="email">
+            </p>
+            <p>
+                <label for="tel">Telefone:</label>
+                <input type="tel" name="tel" id="tel">
+            </p>
+            <p>
+                <button onclick="gravar(event)">Gravar</button>
+            </p>
+        </fieldset>
+    </form>
+</body>
+<script>
+    let teste = {
+        nome : 'Edson',
+        email : 'edson.feitosa@facens.br'
+    }
+    console.log(teste)
+    //transforma objeto em texto
+    console.log(JSON.stringify(teste))
+    //transforma texto em objeto
+    console.log(JSON.parse(JSON.stringify(teste)))
+
+    function gravar(event) {
+        event.preventDefault(); // Evita o envio do formulário
+        const nome = document.querySelector("#nome").value;
+        const email = document.querySelector("#email").value;
+        const tel = document.querySelector("#tel").value;
+        const url = "https://67d0b74b825945773eb1b9fe.mockapi.io/aluno";
+        const aluno = {
+            nome: nome,
+            email: email,
+            tel: tel
+        };
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(aluno)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Aluno gravado:", data);
+            // Limpa os campos do formulário após o envio
+            document.querySelector("#nome").value = "";
+            document.querySelector("#email").value = "";
+            document.querySelector("#tel").value = "";
+            window.alert("Aluno gravado com sucesso!");
+        })
+        .catch(error => {
+            console.error("Erro ao gravar aluno:", error);
+        });
+    }
+</script>
+</html>
