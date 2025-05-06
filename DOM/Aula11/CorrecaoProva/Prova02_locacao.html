@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Locação</title>
+  </head>
+  <body>
+    <h1>Sistema de reserva de carro</h1>
+    <form>
+      <fieldset>
+        <legend>Dados do Cliente</legend>
+        <p>
+          <label for="nome">Nome:</label>
+          <input
+            type="text"
+            name="nome"
+            id="nome"
+            placeholder="Digite o nome"
+            required
+          />
+        </p>
+        <p>
+          <label for="telefone">Telefone:</label>
+          <input
+            type="text"
+            name="telefone"
+            id="telefone"
+            placeholder="Digite o telefone"
+          />
+        </p>
+        <p>
+          <label for="email">E-mail:</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Digite o e-mail"
+            required
+          />
+        </p>
+      </fieldset>
+    </form>
+    <form>
+      <fieldset>
+        <legend>Dados da reserva do veículo</legend>
+        <p>
+          <label for="data">data da reserva:</label>
+          <input onchange="carregarCarros(event)"
+            type="date"
+            name="data"
+            id="data"
+            placeholder="Digite a data da reserva"
+            required
+          />
+        </p>
+        <p>
+          <label for="carro">Carro:</label>
+          <select name="carro" id="carro">
+            <option value="0">Selecione um carro</option>
+          </select>
+        </p>
+        <p>
+          <label for="modelo">Modelo:</label>
+          <input
+            type="text"
+            name="modelo"
+            id="modelo"
+            placeholder="Digite o modelo"
+            readonly
+          />
+        </p>
+        <p>
+          <label for="preco">Preço:</label>
+          <input
+            type="text"
+            name="preco"
+            id="preco"
+            placeholder="Digite o preço"
+            readonly
+          />
+        </p>
+      </fieldset>
+    </form>
+    <button onclick="salvar(event)">Salvar</button>
+  </body>
+  <script>
+    function carregarCarros(event) {
+      event.preventDefault();
+      debugger;
+      const selectCarro = document.getElementById("carro");
+      let carros = [
+        {
+          id: 1,
+          carro: "HB20",
+          modelo: "Hyundai HB20 1.0 Sense",
+          preco: 150,
+          dataReserva: "2025-05-01",
+        },
+        {
+          id: 2,
+          carro: "Onix",
+          modelo: "Chevrolet Onix LT 1.0",
+          preco: 160,
+          dataReserva: "2025-05-02",
+        },
+        {
+          id: 3,
+          carro: "Corolla",
+          modelo: "Toyota Corolla XEi 2.0",
+          preco: 230,
+          dataReserva: "2025-05-03",
+        },
+        {
+          id: 4,
+          carro: "Argo",
+          modelo: "Fiat Argo Drive 1.0",
+          preco: 145,
+          dataReserva: "2025-05-04",
+        },
+        {
+          id: 5,
+          carro: "Kwid",
+          modelo: "Renault Kwid Zen 1.0",
+          preco: 130,
+          dataReserva: "2025-05-05",
+        },
+        {
+          id: 6,
+          carro: "Polo",
+          modelo: "Volkswagen Polo TSI 1.0",
+          preco: 175,
+          dataReserva: "2025-05-06",
+        },
+        {
+          id: 7,
+          carro: "HR-V",
+          modelo: "Honda HR-V EX 1.8",
+          preco: 250,
+          dataReserva: "2025-05-07",
+        },
+        {
+          id: 8,
+          carro: "Compass",
+          modelo: "Jeep Compass Longitude 1.3 Turbo",
+          preco: 300,
+          dataReserva: "2025-05-08",
+        },
+        {
+          id: 9,
+          carro: "Tracker",
+          modelo: "Chevrolet Tracker LT 1.2 Turbo",
+          preco: 280,
+          dataReserva: "2025-05-09",
+        },
+        {
+          id: 10,
+          carro: "Civic",
+          modelo: "Honda Civic Touring 1.5 Turbo",
+          preco: 270,
+          dataReserva: "2025-05-10",
+        },
+      ];
+      let carrossemreserva = carros.filter(x => x.dataReserva != event.target.value);
+      //limpar o select antes de adicionar os novos carros
+        selectCarro.innerHTML = "<option value='0'>Selecione um carro</option>";
+      carrossemreserva.forEach((carro) => {
+        let option = document.createElement("option");
+        option.value = carro.id;
+        option.text = carro.carro;
+        selectCarro.appendChild(option);
+      })
+        selectCarro.addEventListener("change", (event) => {
+            let idCarro = event.target.value;
+            let carroSelecionado = carros.find((carro) => carro.id == idCarro);
+            if (carroSelecionado) {
+            document.getElementById("modelo").value = carroSelecionado.modelo;
+            document.getElementById("preco").value = "R$ "+carroSelecionado.preco;
+            } else {
+            document.getElementById("modelo").value = "";
+            document.getElementById("preco").value = "";
+            }
+        });
+    }
+
+    function salvar(event) {
+      event.preventDefault();
+      let nome = document.getElementById("nome").value;
+      let telefone = document.getElementById("telefone").value;
+      let email = document.getElementById("email").value;
+      let data = document.getElementById("data").value;
+      let carro = document.getElementById("carro").value;
+
+      const link = 'https://67d0b74b825945773eb1b9fe.mockapi.io/locacao'
+        const dados = {
+            nome: nome,
+            telefone: telefone,
+            email: email,
+            datareserva: data,
+            idcarro: carro,
+        };
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dados)
+        };
+        fetch(link, options)
+            .then(response => {
+                if (response.ok) {
+                    alert('Reserva salva com sucesso!');
+                } else {
+                    alert('Erro ao salvar a reserva.');
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+            });
+    }
+  </script>
+</html>
