@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstra - Alinhamento</title>
+  </head>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"
+    crossorigin="anonymous"
+  />
+  <style>
+    .row {
+      height: 200px;
+      background-color: brown;
+    }
+    .exemplo {
+      background-color: blue;
+      border: 2px solid black;
+        color: white;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <h1>Bootstrap - Alinhamento</h1>
+      <h2>Align-items</h2>
+      <div class="row align-items-start">
+        <div class="col-3 exemplo">Coluna 1</div>
+        <div class="col-3 exemplo">Coluna 2</div>
+        <div class="col-3 exemplo">Coluna 3</div>
+      </div>
+      <h2>Align-items-end</h2>
+      <div class="row align-items-end">
+        <div class="col-3 exemplo">Coluna 1</div>
+        <div class="col-3 exemplo">Coluna 2</div>
+        <div class="col-3 exemplo">Coluna 3</div>
+      </div>
+      <h2>Align-Self</h2>
+      <div class="row align-Self-end">
+        <div class="col-3 align-self-start exemplo">Coluna 1</div>
+        <div class="col-3 align-self-center exemplo">Coluna 2</div>
+        <div class="col-3 align-self-end exemplo">Coluna 3</div>
+      </div>
+      <h2>Align-itens breakpoints</h2>
+      <div class="row align-items-lg-end">
+        <div class="col-3 exemplo">Coluna 1</div>
+        <div class="col-3 exemplo">Coluna 2</div>
+        <div class="col-3 exemplo">Coluna 3</div>
+      </div>
+      <h2>Justify-content</h2>
+      <div class="row justify-content-end">
+        <div class="col-3 exemplo">Coluna 1</div>
+        <div class="col-3 exemplo">Coluna 2</div>
+        <div class="col-3 exemplo">Coluna 3</div>
+      </div>
+        <h2>Justify-content breakpoints</h2>
+        <div class="row justify-content-lg-end">
+            <div class="col-3 exemplo">Coluna 1</div>
+            <div class="col-3 exemplo">Coluna 2</div>
+            <div class="col-3 exemplo">Coluna 3</div>
+        </div>
+        <h2>Ordenação de itens</h2>
+        <div class="row">
+            <div class="col-3 order-2 exemplo">Coluna 1</div>
+            <div class="col-3 order-3 exemplo">Coluna 2</div>
+            <div class="col-3 order-1 exemplo">Coluna 3</div>
+        </div>
+    </div>
+    </div>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+    crossorigin="anonymous"
+  ></script>
+</html>
