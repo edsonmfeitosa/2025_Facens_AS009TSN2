@@ -1,0 +1,19 @@
+Linguagens de Programação
+	- Javascript
+		-- variáveis
+		-- condicional, repetição
+		-- anomalias
+		-- tipos de função
+	- HTML
+		-- principais tags
+		-- formulário
+	- CSS
+		-- formas de aplicar
+		-- formas de definir css em uma tags
+			-- e as prioridades
+		-- Flexbox
+	-- Manipular o DOM
+	-- Manipular uma API
+		-- Fetch (Get, Post, Put, Delete)
+	-- Template CSS/Javascript
+		-- Bootstrap	

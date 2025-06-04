@@ -16,10 +16,19 @@
     />
   </head>
   <body onload="carregarClientes()">
-    <div class="container">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12" id="mensagens"></div>
+      </div>
       <div class="row mt-3">
         <div class="col-12 d-flex justify-content-end">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            onclick="limparCampos(event)"
+          >
             <i class="bi bi-plus-circle"></i> Novo
           </button>
         </div>
@@ -51,7 +60,12 @@
         <div class="col-12">
           <hr />
         </div>
-        <div class="col-12">
+        <div class="col-12 d-flex justify-content-center" id="carregando" style="visibility: hidden;">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        <div class="col-12" id="tabela-dados">
           <table class="table table-striped">
             <thead>
               <tr>
@@ -87,59 +101,85 @@
       </div>
     </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastro de Cliente</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-            <div class="col-12">
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Cadastro de Cliente
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <input type="text" name="cadid" id="cadid" hidden />
+            <div class="row">
+              <div class="col-12">
                 <div class="mb-3">
-                    <label for="cadnome" class="form-label">Nome</label>
-                    <input
+                  <label for="cadnome" class="form-label">Nome</label>
+                  <input
                     type="text"
                     class="form-control"
                     id="cadnome"
                     placeholder="Digite o nome do cliente"
-                    />
+                  />
                 </div>
-            </div>
-            <div class="col-12">
+              </div>
+              <div class="col-12">
                 <div class="mb-3">
-                    <label for="cademail" class="form-label">E-mail</label>
-                    <input
+                  <label for="cademail" class="form-label">E-mail</label>
+                  <input
                     type="email"
                     class="form-control"
                     id="cademail"
                     placeholder="Digite o e-mail do cliente"
-                    />
+                  />
                 </div>
-            </div>
-            <div class="col-12">
+              </div>
+              <div class="col-12">
                 <div class="mb-3">
-                    <label for="cadtelefone" class="form-label">Telefone</label>
-                    <input
+                  <label for="cadtelefone" class="form-label">Telefone</label>
+                  <input
                     type="tel"
                     class="form-control"
                     id="cadtelefone"
                     placeholder="Digite o telefone do cliente"
-                    />
+                  />
                 </div>
+              </div>
             </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Fechar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+              onclick="salvarCliente(event)"
+            >
+              Salvar
+            </button>
+          </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Salvar</button>
-      </div>
     </div>
-  </div>
-</div>
-
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
